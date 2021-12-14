@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Reset Factors</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      .form-style{
+            font-family: proxima nova,montserrat,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    color: #777;
+    position: relative;
+    overflow: auto;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    height: auto;
+    margin: 100px auto 8px;
+    width: 400px;
+    min-width: 300px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body style="
+    background-image: url(https://op3static.oktacdn.com/fs/bco/7/fs01p928z8JbGyT661d7);
+">
+<div class="container text-center">
+    <div class="form-style">
+        <h1><img src="https://op3static.oktacdn.com/fs/bco/1/fs01p92eoxYfRbgr81d7" class="auth-org-logo"
+                 alt="c1b logo logo" aria-label="c1b logo logo"></h1>
+        <div>
+            <h3>Available reset factors</h3>
+        </div>
+        <form th:action="@{/process_reset_factors}" th:object="${factorTypes}"
+              method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+
+                <div class="form-group row">
+                    <!--<label class="col-4 col-form-label">Mobile Number: </label>-->
+                    <div class="col-8" th:each="factorType : ${factorTypes}">
+                        <input type="checkbox" th:value="${factorType.id}"
+                              name="factors" class="form-check-input" th:checked="${factorType.id}" onclick="this.value"
+                        />
+                        <label  th:text="${factorType.label}"></label>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group row">
+                     &lt;!&ndash;<label class="col-4 col-form-label">Mobile Number: </label>&ndash;&gt;
+                     <div class="col-8">
+                         <input type="text" th:field="*{smsLabel}" class="form-control"
+                                />
+                     </div>
+                 </div>-->
+                <!--<div class="form-group row">
+                    <label class="col-4 col-form-label">Global Pin: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{globalPin}" class="form-control"
+                               required minlength="2" maxlength="20"/>
+                    </div>
+                </div>-->
+                <div>
+                    <button  type="submit" class="btn btn-primary">Reset Factors</button>
+
+                </div>
+
+            </div>
+        </form>
+        <button  th:onclick="|window.location.href='/enroll'|" th:if="${factorTypes.length!=2}" class="btn btn-primary">Enroll MFA</button>
+        <p th:text="${message}"/>
+    </div>
+
+</div>
+
+</body>
+</html>

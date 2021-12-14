@@ -1,24 +1,24 @@
 package com.credit.one.model;
 
 public class ResetMFA {
-    private String firstName;
-    private String lastName;
+    private String userName;
+    private String ssn;
     private String globalPin;
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSsn() {
+        return ssn;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 
     public String getGlobalPin() {
